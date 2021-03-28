@@ -14,12 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/queue' , function (){
-    \App\Models\UserData::all()->each(function ($item){
-        dispatch(new \App\Jobs\ParserJob($item->only('user_ip' , 'user_agent')))->onQueue('parsing');
-        $item->delete();
-    });
-});
+Route::get('/queue' , [\App\Http\Controllers\QueueController::class , 'makeQueue']);
 Route::get('/geo' , [\App\Http\Controllers\VisitController::class , 'getData']);
 Route::view('/' , 'index');
 
