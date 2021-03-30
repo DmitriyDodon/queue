@@ -8,11 +8,9 @@
 </head>
 <body>
 
-    @if(\Illuminate\Support\Facades\Session::has('message'))
-        <div class="alert alert-success" role="alert">
-            {{ \Illuminate\Support\Facades\Session::pull('message') }}
-        </div>
-    @endif
+    <div class="alert alert-success" id="alert" style="visibility: hidden" role="alert">
+        Queue was made.
+    </div>
 
     <div class="container col-4 my-4 bg-info py-2 reg-window" align="center">
         @yield('content')

@@ -7,7 +7,26 @@
     @guest
         <a href="/login" class="btn btn-primary">Login</a>
     @endguest
-        <a href="/geo" class="btn btn-primary">Save your ip</a>
+    <a href="/geo" class="btn btn-primary">Save your ip</a>
 
-        <a href="/queue" class="btn btn-primary">Make a queue <br> (after seeding)</a>
+    <button class="btn btn-primary" id="mkQueue">Make a queue <br> (after seeding)</button>
+
 @endsection
+<script>
+    window.onload = function () {
+        document.querySelector('#mkQueue').onclick = function () {
+            ajaxGet('GET' , 'queue');
+
+            document.querySelector('#alert').style.visibility = "visible";
+
+        }
+
+    }
+
+
+    function ajaxGet(method , url) {
+        let request = new XMLHttpRequest();
+        request.open( method, url );
+        request.send();
+    }
+</script>
